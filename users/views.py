@@ -1,16 +1,17 @@
-from django.shortcuts import render,HttpResponseRedirect, reverse
+from django.shortcuts import render, HttpResponseRedirect, reverse, redirect
 from .models import CustomUser
-from .forms import CustomUserCreationForm, LoginForm
+from .forms import LoginForm
 from django.contrib.auth import login, authenticate, logout
-import os
-import pwd
+"""
+for assistance with display of user: https://www.youtube.com/watch?v=jYuGw7o1S0I
+"""
 
 # Create your views here.
 
 
 def index(request):
-    usernames = CustomUser.objects.all()
-    return render(request, 'index.html', {'usernames': usernames})
+    user = request.user
+    return render(request, 'index.html', {'user': user})
 
 
 # def account_detail(request, id):
