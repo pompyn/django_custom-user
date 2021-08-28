@@ -19,7 +19,7 @@ from users import views
 
 urlpatterns = [
     # path('account/<int:id>/', views.account_detail, name='account'),
-    path('logout/', views.logout_view, name='logout_view'),
+    path('logout/', views.logout_view, name='logout'),
     path('login/', views.login_view, name='login'),
     path('', views.index, name='home'),
     path('admin/', admin.site.urls),
