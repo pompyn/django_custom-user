@@ -2,15 +2,18 @@
     <b></b>
 
     <nav>
+    <button><a href="/login"><h2>Login</h2></a></button>
     <button><a href="/"><h2>Home</h2></a></button>
     <button><a href="/logout/"><h2>Logout</h2></a></button>
     </nav>
 
 {% if user.is_authenticated %}
 Hello {{ user.first_name }}
+    displayname {{ user.display_name }}
     <p>You are logged in as: {{ user.username }}</p>
     <p>You are {{ user.age }} years old</p>
     <p>Your homepage is {{ user.homepage }}</p>
+    <p> Your auth user model is {{ my_user }}</p>
 
 {% endif %}
 

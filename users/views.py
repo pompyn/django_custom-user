@@ -2,6 +2,8 @@ from django.shortcuts import render, HttpResponseRedirect, reverse, redirect
 from .models import CustomUser
 from .forms import LoginForm
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.models import User
+from django.conf import settings
 """
 for assistance with display of user: https://www.youtube.com/watch?v=jYuGw7o1S0I
 """
@@ -11,7 +13,8 @@ for assistance with display of user: https://www.youtube.com/watch?v=jYuGw7o1S0I
 
 def index(request):
     user = request.user
-    return render(request, 'index.html', {'user': user})
+    my_user = settings.AUTH_USER_MODEL
+    return render(request, 'index.html', {'user': user, 'my_user': my_user})
 
 
 # def account_detail(request, id):
@@ -33,6 +36,6 @@ def login_view(request):
 
 
 def logout_view(request):
-    # logout(request)
+    logout(request)
     # return request(redirect(''))
     return HttpResponseRedirect(reverse('login'))
