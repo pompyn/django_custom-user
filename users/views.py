@@ -4,6 +4,7 @@ from .forms import LoginForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.conf import settings
+from .forms import SignUpForm
 """
 for assistance with display of user: https://www.youtube.com/watch?v=jYuGw7o1S0I
 """
@@ -39,3 +40,24 @@ def logout_view(request):
     logout(request)
     # return request(redirect(''))
     return HttpResponseRedirect(reverse('login'))
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.refresh_from_db()
+            # load the profile instance created by the signal
+            user.save()
+            raw_password = form.cleaned_data.get('password')
+
+            # login user after signing up
+            user = authenticate(username=user.username, password=raw_password)
+            login(request, user)
+
+            # redirect user to home page
+            return redirect('home')
+    else:
+        form = SignUpForm()
+    return render(request, 'generic_form.html', {'form': form})

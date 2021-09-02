@@ -13,7 +13,7 @@ class CustomUser(AbstractUser):
     homepage = models.URLField(null=True, blank=True)
     age = models.IntegerField(null=True, blank=True)
     display_name = models.CharField(max_length=30)
-    username.is_active = models.BooleanField(default=False)
+    # username.is_active = models.BooleanField(default=False)
 
     def __str__(self):
         return self.display_name
