@@ -9,8 +9,8 @@
 {#    </nav>#}
 {% include 'navbar.html' %}
 {% if user.is_authenticated %}
-Hello {{ user.first_name }}
-   {{ user.display_name }}
+{#Hello {{ user.first_name }}#}
+    <p> Your display name is {{ user.display_name }}</p>
     <p>You are logged in as: {{ user.username }}</p>
     <p>You are {{ user.age }} years old</p>
     <p>Your homepage is {{ user.homepage }}</p>
