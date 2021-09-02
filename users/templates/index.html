@@ -1,13 +1,13 @@
 <h1>Custom User</h1>
-    <b></b>
-
-    <nav>
-    <button><a href="/login"><h2>Login</h2></a></button>
-    <button><a href="/"><h2>Home</h2></a></button>
-    <button><a href="/logout/"><h2>Logout</h2></a></button>
-        <button><a href="/signup/"><h2>Signup</h2></a></button>
-    </nav>
-
+{#    <b></b>#}
+{##}
+{#    <nav>#}
+{#    <button><a href="/login"><h2>Login</h2></a></button>#}
+{#    <button><a href="/"><h2>Home</h2></a></button>#}
+{#    <button><a href="/logout/"><h2>Logout</h2></a></button>#}
+{#        <button><a href="/signup/"><h2>Signup</h2></a></button>#}
+{#    </nav>#}
+{% include 'navbar.html' %}
 {% if user.is_authenticated %}
 Hello {{ user.first_name }}
    {{ user.display_name }}
